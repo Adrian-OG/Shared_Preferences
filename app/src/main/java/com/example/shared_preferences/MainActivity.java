@@ -27,26 +27,27 @@ public class MainActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 guardar();
+
 
             }
         });
     }
     public void guardar(){
         Intent i = new Intent(this,home.class);
+
         et1= findViewById(R.id.edit_text_1);
         et2= findViewById(R.id.edit_text_2);
         String email =et1.getText().toString();
         String password =et2.getText().toString();
 
         sp=getSharedPreferences("datos",MODE_PRIVATE);
-        sp.edit();
+        editor=sp.edit();
         editor.putString("email",email);
         editor.putString("password",password);
-        editor.commit();
-        startActivity(i);
+        editor.apply();
 
+        startActivity(i);
 
     }
 
